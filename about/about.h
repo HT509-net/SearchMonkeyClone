@@ -13,28 +13,28 @@
 #define ABOUT_H
 
 #include <QtGlobal>
-#include <QtGui/QDialog>
+#include <QDialog>
 
 namespace Ui {
-	class About;
+  class About;
 }
 
 QT_BEGIN_NAMESPACE
 QT_END_NAMESPACE
 
 class About : public QDialog {
-	 Q_OBJECT
-	 Q_DISABLE_COPY(About)
+   Q_OBJECT
+   Q_DISABLE_COPY(About)
 public:
-	 explicit About(QWidget *parent = 0);
-	 virtual ~About();
-	 Ui::About *ui();
+   explicit About(QWidget *parent = 0);
+   virtual ~About();
+   Ui::About *ui();
 
 protected:
-	 virtual void changeEvent(QEvent *e);
+   virtual void changeEvent(QEvent *e);
 
 private:
-	 Ui::About *m_ui;
+   Ui::About *m_ui;
 };
 
 #endif // ABOUT_H

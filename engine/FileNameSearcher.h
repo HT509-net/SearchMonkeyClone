@@ -19,9 +19,9 @@ protected:
 private:
     virtual void DoSearch();
     virtual void DoStopSearch();
-	 virtual void DoUpdate(const Result& result);
+   virtual void DoUpdate(const Result& result);
 
-	 PhaseOneParameter param;
+   PhaseOneParameter param;
     Searchable* searchable;
 };
 

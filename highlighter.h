@@ -24,20 +24,20 @@ class QTextDocument;
 QT_END_NAMESPACE
 
 class Highlighter : public QSyntaxHighlighter {
-	 Q_OBJECT
+   Q_OBJECT
 
 public:
-	 Highlighter(QTextDocument *parent = 0, const QString &_text = "",
-					 QRegExp::PatternSyntax _syntax = QRegExp::RegExp,
-					 Qt::CaseSensitivity _cs = Qt::CaseSensitive);
-	 void changeFormat(QBrush foreground, int fontWeight, int length, int start = 0);
-	 inline void init() {}
+   Highlighter(QTextDocument *parent = 0, const QString &_text = "",
+           QRegExp::PatternSyntax _syntax = QRegExp::RegExp,
+           Qt::CaseSensitivity _cs = Qt::CaseSensitive);
+   void changeFormat(QBrush foreground, int fontWeight, int length, int start = 0);
+   inline void init() {}
 protected:
-	 void highlightBlock(const QString &text);
+   void highlightBlock(const QString &text);
 
 private:
-	 QRegExp m_rx;
-	 QTextCharFormat m_format;
+   QRegExp m_rx;
+   QTextCharFormat m_format;
 };
 
 #endif // HIGHLIGHTER_H

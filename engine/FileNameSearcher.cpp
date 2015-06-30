@@ -17,21 +17,21 @@ Searchable* FileNameSearcher::BuildSearchable()  // Todo:: wrap Searchable* in Q
 }
 void FileNameSearcher::DoSearch()
 {
-	searchable = BuildSearchable();
-	searchable->Register(this);
+  searchable = BuildSearchable();
+  searchable->Register(this);
 
-	qDebug() << "FileNameSearcher::DoSearch(): calling searchable->Search()";
-	searchable->Search(param.GetKeywords(), param.GetCaseSensitivity(), param.GetSyntax());
+  qDebug() << "FileNameSearcher::DoSearch(): calling searchable->Search()";
+  searchable->Search(param.GetKeywords(), param.GetCaseSensitivity(), param.GetSyntax());
 
-	delete searchable;  // Todo::should we delete searchable here?
+  delete searchable;  // Todo::should we delete searchable here?
 }
 void FileNameSearcher::DoStopSearch()
 {
-	if (searchable != NULL)  // searchable has not done job so we can issue stop
-		searchable->StopSearch();
+  if (searchable != NULL)  // searchable has not done job so we can issue stop
+    searchable->StopSearch();
 }
 void FileNameSearcher::DoUpdate(const Result& result)
 {
-	 qd(4) << "FileNameSearcher::DoUpdate()";
+   qd(4) << "FileNameSearcher::DoUpdate()";
     Notify(result);
 }

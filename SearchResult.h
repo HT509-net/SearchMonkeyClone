@@ -22,24 +22,24 @@ struct LineInfo
     int lineNo;
     QString content;
 
-	 bool operator ==(const LineInfo& line);
+   bool operator ==(const LineInfo& line);
 };
 
 struct SearchResult
 {
-	 SearchResult() {} // add this default ctor because of qRegisterMetaType()
+   SearchResult() {} // add this default ctor because of qRegisterMetaType()
 
     SearchResult(unsigned sessionId, const QFileInfo& fileInfo)
     :
     searchSessionId(sessionId),
     matchedFile(fileInfo)
-	 {}
+   {}
 
-	 unsigned searchSessionId;
-	 QFileInfo matchedFile;
-	 QVector<LineInfo> matchedLines;
+   unsigned searchSessionId;
+   QFileInfo matchedFile;
+   QVector<LineInfo> matchedLines;
 
-	 bool operator ==(const SearchResult& result);
+   bool operator ==(const SearchResult& result);
 };
 
 typedef QSharedPointer<SearchResult> Result;

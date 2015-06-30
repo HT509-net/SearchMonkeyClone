@@ -11,42 +11,42 @@
 using namespace std;
 
 SearchCoordinator::SearchCoordinator()
-	: searching(false)
+  : searching(false)
 {
-	pool.setMaxThreadCount(3);
+  pool.setMaxThreadCount(3);
 }
 void SearchCoordinator::DoUpdate(const Result& result)
 {
-	cout << "SearchCoordinator::DoUpdate()" << endl;
-	cout << "****************" << endl;
-	cout << *result;
-	cout << "****************" << endl;
+  cout << "SearchCoordinator::DoUpdate()" << endl;
+  cout << "****************" << endl;
+  cout << *result;
+  cout << "****************" << endl;
 
-	emit OneSearchDone(result);
+  emit OneSearchDone(result);
 }
 void SearchCoordinator::SearchDone(unsigned sessionId)
 {
-	 qDebug() << "before remove in SearchDone(), threads.size(): " << threads.size();
-	 threads.remove(sessionId);
-	 qDebug() << "after remove in SearchDone(), threads.size(): " << threads.size();
+   qDebug() << "before remove in SearchDone(), threads.size(): " << threads.size();
+   threads.remove(sessionId);
+   qDebug() << "after remove in SearchDone(), threads.size(): " << threads.size();
 
-	 emit SearchFinished(sessionId);
+   emit SearchFinished(sessionId);
 }
 void SearchCoordinator::StartDisplay(TabResults *tabResults, QModelIndex index)
 {
-	 Entex ee("SearchCoordinator::StartDisplay", 1);
+   Entex ee("SearchCoordinator::StartDisplay", 1);
 
-	 DisplayThread *thread = new DisplayThread(tabResults, index);
+   DisplayThread *thread = new DisplayThread(tabResults, index);
 
-	 qDebug() << ee.fn() << "display max thread cnt: " << pool.maxThreadCount() << " active thread before pool.start(): " << pool.activeThreadCount();
-	 pool.start(thread);
-	 qDebug() << "display active thread after pool.start(): " << pool.activeThreadCount();
+   qDebug() << ee.fn() << "display max thread cnt: " << pool.maxThreadCount() << " active thread before pool.start(): " << pool.activeThreadCount();
+   pool.start(thread);
+   qDebug() << "display active thread after pool.start(): " << pool.activeThreadCount();
 }
 void SearchCoordinator::StartSearch(const SearchParameter& param)
 {
-	 Entex ee("SearchCoordinator::StartSearch", 1);
+   Entex ee("SearchCoordinator::StartSearch", 1);
 
-	 searching = true;
+   searching = true;
 
     SearchThread* thread = new SearchThread(param);
     thread->Register(this);
@@ -56,9 +56,9 @@ void SearchCoordinator::StartSearch(const SearchParameter& param)
 
     threads.insert(param.phaseOneParam->GetSessionId(), thread);
 
-	 qDebug() << ee.fn() << "max thread cnt: " << pool.maxThreadCount() << " active thread before pool.start(): " << pool.activeThreadCount();
+   qDebug() << ee.fn() << "max thread cnt: " << pool.maxThreadCount() << " active thread before pool.start(): " << pool.activeThreadCount();
     pool.start(thread);
-	 qDebug() << "active thread after pool.start(): " << pool.activeThreadCount();
+   qDebug() << "active thread after pool.start(): " << pool.activeThreadCount();
 }
 void SearchCoordinator::StopSearch(unsigned sessionId)
 {
@@ -70,5 +70,5 @@ void SearchCoordinator::StopSearch(unsigned sessionId)
        SearchThread* thread = iter.value();
        thread->StopSearch();
     }
-	 searching = false;
+   searching = false;
 }

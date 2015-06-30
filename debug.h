@@ -13,20 +13,20 @@ extern bool LEVEL[9];
 
 class Entex {
 public:
-	Entex(const QString &_fname, int _level)
-	:
-	fname(_fname),
-	level(_level)
-	{
-		if (LEVEL[level])
-			qDebug() << "entering " << fname << "()...";
-	}
-	virtual ~Entex()
-	{
-		if (LEVEL[level])
-			qDebug() << "...exiting " << fname << "()";
-	}
-	inline QString fn() const { return fname + "(): "; }
+    Entex(const QString &_fname, int _level)
+    :
+    fname(_fname),
+    level(_level)
+    {
+        if (LEVEL[level])
+            qDebug() << "entering " << fname << "()...";
+    }
+    virtual ~Entex()
+    {
+        if (LEVEL[level])
+            qDebug() << "...exiting " << fname << "()";
+    }
+    inline QString fn() const { return fname + "(): "; }
 
 	QString fname;
 	int level;

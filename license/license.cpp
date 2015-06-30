@@ -14,7 +14,7 @@
 
 License::License(QWidget *parent) :
     QDialog(parent),
-	 m_ui(new Ui::License)
+   m_ui(new Ui::License)
 {
     m_ui->setupUi(this);
 }

@@ -15,49 +15,49 @@ SMFile::~SMFile()
 {}
 void SMFile::DoSearch(const QStringList& keyword, const Qt::CaseSensitivity& caseSensitive, QRegExp::PatternSyntax syntax)
 {
-	Entex ee("SMFile::DoSearch", 3);
+  Entex ee("SMFile::DoSearch", 3);
 
-	if (keyword.isEmpty())
-		return;
+  if (keyword.isEmpty())
+    return;
 
-	QFile file(fileInfo.filePath());
-	if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-	{
-		qDebug() << "file open failed";  //Todo:: throw exception
-		return;
-	}
-	QTextStream in(&file);
-	int lineNo = 1;
+  QFile file(fileInfo.filePath());
+  if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+  {
+    qDebug() << "file open failed";  //Todo:: throw exception
+    return;
+  }
+  QTextStream in(&file);
+  int lineNo = 1;
 
-	// Todo:: maybe we should have some sort of SearchResult builder to build
-	// SearchResult which has the knowledge of SearchSessionId and takes in a
-	// QFileInfo as parameter
-	Result result(new SearchResult(searchSessionId, fileInfo));
+  // Todo:: maybe we should have some sort of SearchResult builder to build
+  // SearchResult which has the knowledge of SearchSessionId and takes in a
+  // QFileInfo as parameter
+  Result result(new SearchResult(searchSessionId, fileInfo));
 
-	while (!in.atEnd())
-	{
-		if (stopIssued == true)
-			break;
+  while (!in.atEnd())
+  {
+    if (stopIssued == true)
+      break;
 
-		QString line = in.readLine();
+    QString line = in.readLine();
 
-		if (IsLineMatched(line, keyword[0], caseSensitive, syntax))
-		{
-			qd(4) << "found matched line";
-			result->matchedLines.push_back(LineInfo(lineNo, line));
-		}
+    if (IsLineMatched(line, keyword[0], caseSensitive, syntax))
+    {
+      qd(4) << "found matched line";
+      result->matchedLines.push_back(LineInfo(lineNo, line));
+    }
 
-		++lineNo;
-	}
-	if (result->matchedLines.empty() == false)
-		Notify(result);
+    ++lineNo;
+  }
+  if (result->matchedLines.empty() == false)
+    Notify(result);
 }
 void SMFile::DoStopSearch()
 {
-	 stopIssued = true;
+   stopIssued = true;
 }
 bool SMFile::IsLineMatched(const QString& line, const QString& keyword, const Qt::CaseSensitivity caseSensitive, QRegExp::PatternSyntax syntax )
 {
-	QRegExp matcher(keyword, caseSensitive, syntax);
-	return matcher.indexIn(line, 0) != -1;
+  QRegExp matcher(keyword, caseSensitive, syntax);
+  return matcher.indexIn(line, 0) != -1;
 }

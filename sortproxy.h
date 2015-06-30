@@ -25,7 +25,7 @@ public:
 protected:
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
-	 QDateTime qstring2qdatetime(const QString & s) const;
+   QDateTime qstring2qdatetime(const QString & s) const;
 };
 
 #endif // SORTPROXY_H

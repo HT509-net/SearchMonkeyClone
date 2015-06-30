@@ -14,12 +14,12 @@ public:
     ~SMFileInfo();
 
 private:
-	 // we make SMFileInfo to do nothing when StopSearch() called since its
-	 // Search() operation takes no time to complete so it doesn't really make
-	 // lots of sense to stop it.
-	 virtual void DoSearch(const QStringList& keywords,
-								  const Qt::CaseSensitivity& caseSensitive,
-										  QRegExp::PatternSyntax syntax =QRegExp::RegExp);
+   // we make SMFileInfo to do nothing when StopSearch() called since its
+   // Search() operation takes no time to complete so it doesn't really make
+   // lots of sense to stop it.
+   virtual void DoSearch(const QStringList& keywords,
+                  const Qt::CaseSensitivity& caseSensitive,
+                      QRegExp::PatternSyntax syntax =QRegExp::RegExp);
     unsigned searchSessionId;
     QFileInfo fileInfo;
     bool invertSearch;

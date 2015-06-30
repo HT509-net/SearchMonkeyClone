@@ -2,7 +2,12 @@
 # Project created by QtCreator 2009-10-18T14:49:42
 # -------------------------------------------------
 TARGET = searchmonkey
+
 TEMPLATE = app
+
+QT += widgets
+QT += concurrent
+
 SOURCES += main.cpp \
     mainwindow.cpp \
     sortproxy.cpp \

@@ -15,7 +15,7 @@
 #include <limits.h>
 
 #include <QtGlobal>
-#include <QtGui/QDialog>
+#include <QDialog>
 
 const quint32 GEN_TAB    = 1U << 0;  // General tab of Settings
 const quint32 GEN_IGNORE = 1U << 1;  // ...
@@ -42,46 +42,46 @@ class Settings : public QDialog {
 public:
     explicit Settings(QWidget *parent = 0);
     virtual ~Settings();
-	 void createConfigFile();
-	 inline Dir *getDir() { return m_dir; }
-	 inline Preset *getPreset() { return m_preset; }
-	 void reset();
-	 void saveInCaseCancel();
-	 inline void setPreset(Preset *_preset) { m_preset = _preset; }
-	 Ui::Settings *ui();
+   void createConfigFile();
+   inline Dir *getDir() { return m_dir; }
+   inline Preset *getPreset() { return m_preset; }
+   void reset();
+   void saveInCaseCancel();
+   inline void setPreset(Preset *_preset) { m_preset = _preset; }
+   Ui::Settings *ui();
 
 protected:
     virtual void changeEvent(QEvent *e);
 
 private slots:
-	void on_addPushButton_clicked();
-	void on_buttonBox_clicked(QAbstractButton* button);
-	void on_defaultPushButton_clicked();
-	void on_deletePushButton_clicked();
-	void on_directoriesButtonBox_clicked(QAbstractButton* button);
-	void on_generalButtonBox_clicked(QAbstractButton* button);
-	void on_leftAllPushButton_clicked();
-	void on_leftPushButton_clicked();
-	void on_moreLineEdit_textEdited(QString);
-	void on_rightAllPushButton_clicked();
-	void on_rightPushButton_clicked();
-	void on_searchAllDirsCheckBox_toggled(bool checked);
-	void on_setTypePushButton_clicked();
+  void on_addPushButton_clicked();
+  void on_buttonBox_clicked(QAbstractButton* button);
+  void on_defaultPushButton_clicked();
+  void on_deletePushButton_clicked();
+  void on_directoriesButtonBox_clicked(QAbstractButton* button);
+  void on_generalButtonBox_clicked(QAbstractButton* button);
+  void on_leftAllPushButton_clicked();
+  void on_leftPushButton_clicked();
+  void on_moreLineEdit_textEdited(QString);
+  void on_rightAllPushButton_clicked();
+  void on_rightPushButton_clicked();
+  void on_searchAllDirsCheckBox_toggled(bool checked);
+  void on_setTypePushButton_clicked();
 
 private:
-	 quint32 m_general;
-	 Dir *m_dir;
-	 Preset *m_preset;
+   quint32 m_general;
+   Dir *m_dir;
+   Preset *m_preset;
     Ui::Settings *m_ui;
 };
 
 // handy helper class to reset Settings when a function leaves scope
 class autoSettingsReset {
 public:
-	autoSettingsReset(Settings *settings) { m_settings = settings; }
-	~autoSettingsReset() { m_settings->reset(); }
+  autoSettingsReset(Settings *settings) { m_settings = settings; }
+  ~autoSettingsReset() { m_settings->reset(); }
 private:
-	Settings *m_settings;
+  Settings *m_settings;
 };
 
 #endif // SETTINGS_H

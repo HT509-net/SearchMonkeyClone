@@ -16,11 +16,11 @@ syntax(param.GetSyntax())
 {}
 void ContentSearcher::DoUpdate(const Result& result)
 {
-	 //qDebug() << "ContentSearcher::DoUpdate()";
+   //qDebug() << "ContentSearcher::DoUpdate()";
     Searchable* searchable = new SMFile(result->searchSessionId, result->matchedFile);
 
-	 // here we make the ContentSearcher's observers to observer searchable
-	 // since searchable will call Notify() which has the eventual result
+   // here we make the ContentSearcher's observers to observer searchable
+   // since searchable will call Notify() which has the eventual result
     CallEach(GetObservers(), searchable, &Subject::Register);
     searchable->Search(contentKeyword, caseSensitive, syntax);
 }

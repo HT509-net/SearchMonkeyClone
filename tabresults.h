@@ -13,7 +13,7 @@
 #ifndef TABRESULTS_H
 #define TABRESULTS_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include "guicontext.h"
 #include "SearchCoordinator.h"

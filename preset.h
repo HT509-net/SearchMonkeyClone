@@ -33,32 +33,32 @@ const QStringList typeWinx = (QStringList()
 
 class Preset {
 public:
-	Preset(Ui::Settings *sui);
-	virtual ~Preset() {}
-	void cancel();
-	QStringList filterSkip(const QStringList &_files, const QDir &_currentDir);
-	QString getKey(const QString & text);
-	void init();
-	void initComboBox();
-	void okApply();
-	int processMore(const QStringList &_list);
-	void reset();
-	int set(QStringList *patterns);
-	void setType();
-	inline int skipFilterSz() const { return m_skipFilter.size(); }
-	QStringList starDotted(const QStringList & _sl);
-	inline QString target() const { return m_sui->targetComboBox->currentText();}
-	Ui::Settings *sui();
+  Preset(Ui::Settings *sui);
+  virtual ~Preset() {}
+  void cancel();
+  QStringList filterSkip(const QStringList &_files, const QDir &_currentDir);
+  QString getKey(const QString & text);
+  void init();
+  void initComboBox();
+  void okApply();
+  int processMore(const QStringList &_list);
+  void reset();
+  int set(QStringList *patterns);
+  void setType();
+  inline int skipFilterSz() const { return m_skipFilter.size(); }
+  QStringList starDotted(const QStringList & _sl);
+  inline QString target() const { return m_sui->targetComboBox->currentText();}
+  Ui::Settings *sui();
 
 private:
-	Indexes m_indexes;
-	Presets m_newsets,
-			  m_presets;
-	QStringList m_also,
-					m_only,
-					m_skip,
-					m_skipFilter;
-	Ui::Settings *m_sui;
+  Indexes m_indexes;
+  Presets m_newsets,
+        m_presets;
+  QStringList m_also,
+          m_only,
+          m_skip,
+          m_skipFilter;
+  Ui::Settings *m_sui;
 };
 
 #endif // PRESET_H

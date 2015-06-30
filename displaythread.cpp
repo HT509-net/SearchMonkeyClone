@@ -5,7 +5,7 @@
 
 void DisplayThread::run() {
 
-	this->tabResults->displayLines(index);
-	//tabResults->hello();
+  this->tabResults->displayLines(index);
+  //tabResults->hello();
 }
 

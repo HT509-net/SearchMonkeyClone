@@ -18,12 +18,12 @@ void SearchThread::run()
 {
     if (searcher != NULL)
     {
-		  searcher->Search();
-		  emit SearchFinished(searchSessionId);
-		  delete searcher;
+      searcher->Search();
+      emit SearchFinished(searchSessionId);
+      delete searcher;
     }
 }
 void SearchThread::DoUpdate(const Result& result)
 {
-	 Notify(result);  // just pass along to the observers of SearchThread
+   Notify(result);  // just pass along to the observers of SearchThread
 }

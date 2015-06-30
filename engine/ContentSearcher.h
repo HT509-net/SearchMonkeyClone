@@ -15,9 +15,9 @@ public:
     ContentSearcher(Searcher* searcher, const PhaseTwoParameter& param);
 
 private:
-	 virtual void DoUpdate(const Result& result);
+   virtual void DoUpdate(const Result& result);
 
-	 QStringList contentKeyword;
+   QStringList contentKeyword;
     Qt::CaseSensitivity caseSensitive;
     QRegExp::PatternSyntax syntax;
 };

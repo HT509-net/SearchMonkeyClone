@@ -28,8 +28,6 @@
 #include <QString>
 #include <QStringList>
 
-using namespace std;
-
 using std::string;
 
 typedef unsigned long long ull;
@@ -43,7 +41,7 @@ const qint16 MAX_SEARCH_TABS = 128;
 
 const Qt::GlobalColor COLOR_TEXT = Qt::black;
 const Qt::GlobalColor COLOR2_HIGHLIGHT = Qt::red;
-const QColor COLOR_HIGHLIGHT = QColor(220,0,3);    // darker, less annoying red
+const QColor COLOR1_HIGHLIGHT = QColor(220,0,3);    // darker, less annoying red
 const QColor COLOR_HYPERLINK = QColor(6,105,205);  // RGB hyperlink blue
 
 const QString CONFIG_FILE = "./.smrc";
@@ -61,7 +59,7 @@ bool validRx(const QString &_s, QRegExp::PatternSyntax _syntax);
 bool validRx(const QStringList &_sl, QRegExp::PatternSyntax _syntax);
 char* strip(char* pz, const char* g, int* n = NULL);
 bool boxConfirm(const QString &s,
-					 const QMessageBox::Icon = QMessageBox::Warning);
+           const QMessageBox::Icon = QMessageBox::Warning);
 void boxError(const QString &s, const QMessageBox::Icon = QMessageBox::Warning);
 void listWidget2List(QListWidget *lw, QStringList *sl);
 void list2ListWidget(const QStringList &sl, QListWidget *lw);
@@ -78,8 +76,8 @@ QString ms2units(quint64);
 QRegExp::PatternSyntax uint2syntax(uint _index);
 
 /* this helper function is used for easier call a member function of Caller on
-	a container of Callee object, this member function take 1 parameter which is
-	the callee object ie, the scenario like this:
+  a container of Callee object, this member function take 1 parameter which is
+  the callee object ie, the scenario like this:
 
     QList<Observer*> observers = GetObservers();
     QList<Observer*>::const_iterator iter = observers.begin();
@@ -95,12 +93,7 @@ QRegExp::PatternSyntax uint2syntax(uint _index);
 template <typename CalleeContainer, typename Caller, typename Op>
 void CallEach(const CalleeContainer& container, Caller& caller, Op op)
 {
-    for_each(container.begin(), container.end(), bind1st(mem_fun(op), caller));
-}
-template <typename T>
-bool IsValueInRange(T value, T lowerBound, T upperBound)
-{
-    return LowerBoundFit(value, lowerBound) && UpperBoundFit(value, upperBound);
+    std::for_each(container.begin(), container.end(), std::bind1st(std::mem_fun(op), caller));
 }
 template <typename T>
 bool BoundSpecified(T boundValue)
@@ -128,6 +121,11 @@ bool UpperBoundFit(T value, T upperBound)
         return true;
 
     return false;
+}
+template <typename T>
+bool IsValueInRange(T value, T lowerBound, T upperBound)
+{
+    return LowerBoundFit(value, lowerBound) && UpperBoundFit(value, upperBound);
 }
 
 #endif

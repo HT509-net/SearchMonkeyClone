@@ -12,23 +12,23 @@
 #ifndef LICENSE_H
 #define LICENSE_H
 
-#include <QtGui/QDialog>
+#include <QDialog>
 
 namespace Ui {
-	 class License;
+   class License;
 }
 
 class License : public QDialog {
     Q_OBJECT
 public:
-	 License(QWidget *parent = 0);
-	 ~License();
+   License(QWidget *parent = 0);
+   ~License();
 
 protected:
     void changeEvent(QEvent *e);
 
 private:
-	 Ui::License *m_ui;
+   Ui::License *m_ui;
 };
 
 #endif // LICENSE_H

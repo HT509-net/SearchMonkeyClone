@@ -9,16 +9,16 @@
 class Searchable : public Subject
 {
 public:
-	virtual ~Searchable() {}
-	void Search(const QStringList& keywords,
+  virtual ~Searchable() {}
+  void Search(const QStringList& keywords,
                const Qt::CaseSensitivity& caseSensitive,
-					QRegExp::PatternSyntax syntax = QRegExp::RegExp);
+          QRegExp::PatternSyntax syntax = QRegExp::RegExp);
    void StopSearch();
 
 private:
-	 virtual void DoSearch(const QStringList& keywords,
+   virtual void DoSearch(const QStringList& keywords,
                           const Qt::CaseSensitivity& caseSensitive,
-								  QRegExp::PatternSyntax syntax = QRegExp::RegExp) = 0;
+                  QRegExp::PatternSyntax syntax = QRegExp::RegExp) = 0;
     virtual void DoStopSearch();
 };
 
