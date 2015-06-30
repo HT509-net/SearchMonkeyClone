@@ -1,0 +1,12 @@
+<RCC>
+    <qresource>
+        <file>pixmaps/ico.ico</file>
+        <file>pixmaps/searchmonkey-300x300.png</file>
+        <file>pixmaps/searchmonkey-16x16.png</file>
+        <file>pixmaps/searchmonkey-22x22.png</file>
+        <file>pixmaps/searchmonkey-24x24.png</file>
+        <file>pixmaps/searchmonkey-32x32.png</file>
+        <file>pixmaps/searchmonkey-48x48.png</file>
+        <file>pixmaps/searchmonkey-96x96.png</file>
+    </qresource>
+</RCC>
