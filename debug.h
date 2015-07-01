@@ -11,8 +11,9 @@ extern bool LEVEL[9];
 
 #define qd(x) if (LEVEL[x]) qDebug()
 
-class Entex {
-public:
+class Entex
+{
+  public:
     Entex(const QString &_fname, int _level)
     :
     fname(_fname),
