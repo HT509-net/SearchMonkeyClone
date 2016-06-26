@@ -5,7 +5,7 @@
 #include <QSharedPointer>
 
 class Observer;
-class SearchResult;
+struct SearchResult;
 
 class Subject
 {

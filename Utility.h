@@ -17,6 +17,7 @@
 #define UTILITY_H
 
 #include <algorithm>
+#include <functional> // bind1st deprecated
 #include <string>
 
 #include <QComboBox>
@@ -93,6 +94,7 @@ QRegExp::PatternSyntax uint2syntax(uint _index);
 template <typename CalleeContainer, typename Caller, typename Op>
 void CallEach(const CalleeContainer& container, Caller& caller, Op op)
 {
+
     std::for_each(container.begin(), container.end(), std::bind1st(std::mem_fun(op), caller));
 }
 template <typename T>

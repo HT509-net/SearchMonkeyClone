@@ -9,8 +9,11 @@ searchSessionId(sessionId),
 fileInfo(info),
 invertSearch(invertSearch)
 {}
+
 SMFileInfo::~SMFileInfo()
-{}
+{
+}
+
 void SMFileInfo::DoSearch(const QStringList& keywords, const Qt::CaseSensitivity& caseSensitive, QRegExp::PatternSyntax syntax)
 {
   Entex ee("SMFileInfo::DoSearch", 4);

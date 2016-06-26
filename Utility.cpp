@@ -479,7 +479,7 @@ qint64 units2bytes  (const QString &_units) {
     return (-1);
 
   float mag;
-  char buf[_units.size()];  // more than big enough
+  char buf[40000];  // more than big enough
 
   sscanf(_units.toStdString().c_str(), "%f %s", &mag, buf);
   QString s("hack");

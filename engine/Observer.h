@@ -3,7 +3,8 @@
 
 #include <QSharedPointer>
 
-class SearchResult;
+struct SearchResult;
+
 class Observer
 {
 public:
