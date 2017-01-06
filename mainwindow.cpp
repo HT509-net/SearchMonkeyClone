@@ -244,7 +244,7 @@ MainWindow::MainWindow(
   setWindowTitle("[*]Searchmonkey - Power Searching Without the Pain");
   setWindowIcon(QIcon(":/pixmaps/searchmonkey-300x300.png"));
   sui->setWindowIcon(QIcon(":/pixmaps/searchmonkey-300x300.png"));
-  setWindowFlags(Qt::WindowMinMaxButtonsHint | Qt::Window);
+  setWindowFlags(Qt::WindowMinMaxButtonsHint | Qt::Window | Qt::WindowCloseButtonHint);
   setUnifiedTitleAndToolBarOnMac(true);
 
   QGraphicsScene scene;
